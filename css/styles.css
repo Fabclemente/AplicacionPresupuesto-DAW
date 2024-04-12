@@ -1,0 +1,91 @@
+header {
+    display: block;
+	text-align: center;
+}
+
+#title {
+    max-width: 300px;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+#amount-available{
+    font-size: 36px;
+    font-weight: bolder;
+}
+
+.box{
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+.amount{
+    margin-left: 30px;
+}
+
+#first-container{
+    display: block;
+}
+
+#box-income{
+    width: 280px;
+    height: 50px;
+    background-color: rgba(43,50,58,255);
+    margin: 0 auto;
+    margin-top: 15px;
+    border-radius: 3px;
+    justify-content: center;
+}
+
+#income-text{
+    margin-top: 13px;
+    color: white;
+    font-size: 14px;
+    align-items: center;
+}
+
+#box-expense{
+    width: 280px;
+    height: 50px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 15px;
+    border-radius: 3px;
+    border-width: medium;
+    border-style: solid;
+    border-color: rgba(43,50,58,255);
+    justify-content: center;
+}
+
+#expense-text{
+    margin-top: 13px;
+    margin-bottom: 13px;
+    color: rgba(43,50,58,255);
+    font-size: 14px;
+}
+
+#expense-percentage{
+    margin: 0 auto;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+#expense{
+    color: rgba(82,87,95,255);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#percentage{
+    background-color: rgba(43,50,58,255);
+    padding-left: 18px;
+    padding-top: 3px;
+    padding-right: 18px;
+    padding-bottom: 3px;
+    margin-left: 30px;
+    text-align: center;
+    color: white;
+    border-radius: 3px;
+    font-size: 12px;
+}
