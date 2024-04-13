@@ -89,3 +89,21 @@ header {
     border-radius: 3px;
     font-size: 12px;
 }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: #2b323a;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn {
+    margin: 10px;
+}
