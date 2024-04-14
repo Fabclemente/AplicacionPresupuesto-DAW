@@ -24,43 +24,45 @@
         </div>
       </div>
     </header>
-    <div class="row mt-5">
-      <div class="col-md-6">
-        <h3>Transacción</h3>
-        <form id="transaction-form">
-          <div class="form-group">
-            <select class="form-control" id="transaction-type">
-              <option value="income">Ingreso</option>
-              <option value="expense">Egreso</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="transaction-description" placeholder="Descripción">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="transaction-description" placeholder="Monto">
-          </div>
-          <div class="button-container"><button type="submit" class="btn btn-primary">Agregar</button>
-          </div>
-        </form>
-      </div>
-      <div class="col-md-6">
-        <h3>Detalles</h3>
-        <ul class="nav nav-tabs" id="details-tabs" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="income-tab" data-toggle="tab" href="#income" role="tab" aria-controls="income" aria-selected="true">Ingresos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="false">Egresos</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="details-content">
-          <div class="tab-pane fade show active" id="income" role="tabpanel" aria-labelledby="income-tab"></div>
-          <div class="tab-pane fade" id="expense" role="tabpanel" aria-labelledby="expense-tab"></div>
+    <div class="center-container">
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <h3>Transacción</h3>
+      <form id="transaction-form">
+        <div class="form-group">
+          <select class="form-control" id="transaction-type">
+            <option value="income">Ingreso</option>
+            <option value="expense">Egreso</option>
+          </select>
         </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="transaction-description" placeholder="Descripción">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="transaction-description" placeholder="Monto">
+        </div>
+        <div class="button-container">
+          <button type="submit" class="btn btn-primary">Agregar</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h3>Detalles</h3>
+      <ul class="nav nav-tabs" id="details-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="income-tab" data-toggle="tab" href="#income" role="tab" aria-controls="income" aria-selected="true">Ingresos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="false">Egresos</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="details-content">
+        <div class="tab-pane fade show active" id="income" role="tabpanel" aria-labelledby="income-tab"></div>
+        <div class="tab-pane fade" id="expense" role="tabpanel" aria-labelledby="expense-tab"></div>
       </div>
     </div>
   </div>
+</div>
 
   <script src="script.js"></script>
 </body>

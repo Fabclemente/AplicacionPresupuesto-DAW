@@ -90,6 +90,21 @@ header {
     font-size: 12px;
 }
 
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.col-md-6 {
+    max-width: 500px;
+}
+
+h3 {
+    text-align: center;
+}    
+
 .button-container {
     display: flex;
     justify-content: center;
