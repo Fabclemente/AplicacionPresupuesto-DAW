@@ -1,8 +1,12 @@
-let ingreso = 0 ;
-let descripcion = 0;
+let botto = document.getElementById("sumar");
+let total = document.getElementById("total");
 
-console.log("ingrese sus primeros ingresos");
-console.log("Cual es el concepto de su primer ingreso");
+botto.addEventListener("click",hacersuma);
 
-alert (" HOLA MUNDO")   ;
+function hacersuma(){
+    let n1=parseFloat(document.getElementById('n1').value);
+    let n2=parseFloat(document.getElementById('n2').value);
 
+    let = s=n1+n2;
+    total.innerHTML = 'la suma es ${s}' ;
+}
