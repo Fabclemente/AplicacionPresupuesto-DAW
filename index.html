@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <img src="" alt="">
+  <script defer src="Js/tabsApp.js"></script>
   
   
 </head>
@@ -52,18 +53,21 @@
       </form>
     </div>
     <div class="col-md-6">
-      <h3>Detalles</h3>
-      <ul class="nav nav-tabs" id="details-tabs" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" id="income-tab" data-toggle="tab" href="#income" role="tab" aria-controls="income" aria-selected="true">Ingresos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="false">Egresos</a>
-        </li>
-      </ul>
+      <div id="details-tabs" role="tablist">
+          <button role="tab" id="btn-Income">Ingresos</a>
+          <button role="tab" id="btn-Expense">Egresos</a>
+      </div>
       <div class="tab-content" id="details-content">
-        <div class="tab-pane fade show active" id="income" role="tabpanel" aria-labelledby="income-tab"></div>
-        <div class="tab-pane fade" id="expense" role="tabpanel" aria-labelledby="expense-tab"></div>
+        <div id="income" role="tabpanel">
+          <div class="details">
+            <span class="description">Salario</span><div class="division-maker"><span class="details-amount">+ 400.00</span></div>
+          </div>
+        </div>
+        <div id="expense" role="tabpanel">
+          <div class="details">
+            <span class="description">Internet</span><div class="division-maker"><span class="details-amount">- 30.00</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
