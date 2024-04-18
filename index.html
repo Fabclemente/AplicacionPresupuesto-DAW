@@ -6,9 +6,10 @@
   <title>Aplicacion Presupuesto</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="Js/script.Js"></script>
 <<<<<<< HEAD
   <img src="" alt="">
-  <script defer src="Js/tabsApp.js"></script>
+  
   
   
 =======
@@ -44,59 +45,31 @@
               <label for="monto">Monto:</label>
               <input type="number" id="monto" class="form-control">
             </div>
-            <button type="button" onclick="agregarTransaccion()" class="btn btn-primary">Agregar Transacción</button>
+            <button type="button" onclick="agregarTransaccion()" class="btn btn-primary">Agregar</button>
           </form>
-        </div>
-        <div class="col-md-6">
-          <h3>Detalles</h3>
-          <ul class="nav nav-tabs" id="details-tabs" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="income-tab" data-toggle="tab" href="#income" role="tab" aria-controls="income" aria-selected="true">Ingresos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="false">Egresos</a>
-            </li>
-          </ul>
-          <div class="tab-content" id="details-content">
-            <div class="tab-pane fade show active" id="income" role="tabpanel" aria-labelledby="income-tab">
-              <ul class="list-group" id="lista-ingresos"></ul>
-            </div>
-            <div class="tab-pane fade" id="expense" role="tabpanel" aria-labelledby="expense-tab">
-              <ul class="list-group" id="lista-egresos"></ul>
-            </div>
-          </div>
-        </div>
-<<<<<<< HEAD
-        <div class="form-group">
-          <input type="text" class="form-control" id="transaction-description" placeholder="Monto">
-        </div>
-        <div class="button-container">
-          <button type="submit" class="btn btn-primary">Agregar</button>
         </div>
       </form>
     </div>
     <div class="col-md-6">
       <div id="details-tabs" role="tablist">
-          <button role="tab" id="btn-Income">Ingresos</a>
-          <button role="tab" id="btn-Expense">Egresos</a>
+          <button role="tab" onclick="mostrarIngresos('incomes');" id="btn-Income">Ingresos</a>
+          <button role="tab" onclick="mostrarEgresos('expenses');" id="btn-Expense">Egresos</a>
       </div>
       <div class="tab-content" id="details-content">
-        <div id="income" role="tabpanel">
+        <div id="incomes" role="tabpanel">
           <div class="details">
             <span class="description">Salario</span><div class="division-maker"><span class="details-amount">+ 400.00</span></div>
           </div>
         </div>
-        <div id="expense" role="tabpanel">
+        <div id="expenses" role="tabpanel">
           <div class="details">
             <span class="description">Internet</span><div class="division-maker"><span class="details-amount">- 30.00</span></div>
           </div>
         </div>
-=======
->>>>>>> 6941a48ee140709f87f4974709731928d4f5c553
       </div>
     </div>
   </div>
 
-  <script src="js/script.js"></script>
+  
 </body>
 </html>

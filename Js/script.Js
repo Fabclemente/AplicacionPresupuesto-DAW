@@ -50,3 +50,25 @@ function mostrarResultado(descripcion, monto, tipoTransaccion) {
     resultado.textContent = '';
   }, 3000); 
 }
+
+function mostrarIngresos(id){
+  var elemento = document.getElementById(id);
+  var elemento1 = document.getElementById('expenses');
+  elemento.style.display = "block";
+  elemento1.style.display = "none";
+  var btnIncome = document.getElementById('btn-Income');
+  var btnExpense = document. getElementById('btn-Expense');
+  btnIncome.style.backgroundColor = 'rgba(43,50,58,255)';
+  btnExpense.style.backgroundColor = 'rgba(214,214,214,255)';
+}
+
+function mostrarEgresos(id){
+  var elemento = document.getElementById(id);
+  var elemento1 = document.getElementById('incomes');
+  elemento.style.display = "block";
+  elemento1.style.display = "none";
+  var btnIncome = document.getElementById('btn-Income');
+  var btnExpense = document. getElementById('btn-Expense');
+  btnIncome.style.backgroundColor = 'rgba(214,214,214,255)';
+  btnExpense.style.backgroundColor = 'rgba(43,50,58,255)';
+}

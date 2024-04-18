@@ -176,3 +176,7 @@ h3 {
     color: rgba(43,50,58,255);
     font-weight: bold;
 }
+
+#expenses{
+    display:none;
+}
