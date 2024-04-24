@@ -1,127 +1,74 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Obtener referencia a los elementos del DOM
-    const titulo = document.getElementById('titulo');
-    const mes = document.getElementById('mes');
-    const año = document.getElementById('año');
-    const montoTotal = document.getElementById('montoTotal');
-    const incomeText = document.getElementById('income-text');
-    const expenseText = document.getElementById('expense-text');
-    const expensePercentage = document.getElementById('expense');
+var fecha = new Date();
 
-    const transactionForm = document.getElementById('transaction-form');
-    const transactionType = document.getElementById('transaction-type');
-    const transactionDescription = document.getElementById('transaction-description');
-    const transactionAmount = document.getElementById('transaction-amount');
+var meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
-    const incomeTableBody = document.querySelector('#income-table tbody');
-    const expenseTableBody = document.querySelector('#expense-table tbody');
+var mesActual = meses[fecha.getMonth()];
 
-    // Arreglos para manejar las transacciones
-    let ingresos = [];
-    let egresos = [];
+var anoActual = fecha.getFullYear();
 
-    // Función para agregar una nueva transacción
-    function agregarTransaccion() {
-        // Obtener valores del formulario
-        const tipo = transactionType.value;
-        const descripcion = transactionDescription.value.trim(); // Eliminar espacios en blanco al inicio y al final
-        const monto = parseFloat(transactionAmount.value);
+var totalIngresos = 0;
+var totalEgresos = 0;
 
-        // Validar campo de descripción
-        if (descripcion === '') {
-            alert('Por favor, ingrese una descripción.');
-            return;
-        }
 
-        // Validar monto
-        if (isNaN(monto) || monto <= 0) {
-            alert('Por favor, ingrese un monto válido.');
-            return;
-        }
+function agregarTransaccion() {
+ 
+  var descripcion = document.getElementById('descripcion').value;
+  var monto = parseFloat(document.getElementById('monto').value);
+  if (descripcion.trim() === '' || isNaN(monto) || monto <= 0) {
+    alert('Por favor, ingrese una descripción válida y un monto mayor que cero.');
+    return;
+  }
+  totalIngresos += monto;
 
-        // Crear objeto de transacción
-        const nuevaTransaccion = {
-            tipo: tipo,
-            descripcion: descripcion,
-            monto: monto
-        };
+ 
+  agregarDetalleTransaccion(descripcion, monto, 'ingresos');
 
-        // Agregar transacción al arreglo correspondiente
-        if (tipo === 'income') {
-            ingresos.push(nuevaTransaccion);
-        } else {
-            egresos.push(nuevaTransaccion);
-        }
 
-        // Actualizar tablas y totales
-        actualizarTablas();
-        calcularTotales();
-    }
+  actualizarTotales();
+  mostrarResultado(descripcion, monto, 'income');
+}
 
-    // Función para actualizar las tablas de ingresos y egresos
-    function actualizarTablas() {
-        // Limpiar tablas
-        incomeTableBody.innerHTML = '';
-        expenseTableBody.innerHTML = '';
+function agregarDetalleTransaccion(descripcion, monto, tipo) {
+  var lista = document.getElementById(`lista-${tipo}`);
+  var nuevaTransaccion = document.createElement('li');
+  nuevaTransaccion.textContent = `${descripcion}: ${monto.toFixed(2)}`;
+  lista.appendChild(nuevaTransaccion);
+}
 
-        // Llenar tablas con transacciones
-        ingresos.forEach(function(transaccion) {
-            const row = document.createElement('tr');
-            row.innerHTML = `<td>${transaccion.descripcion}</td><td>${transaccion.monto.toFixed(2)}</td>`;
-            incomeTableBody.appendChild(row);
-        });
+function actualizarTotales() {
+  document.getElementById('total-ingresos').textContent = '+' + totalIngresos.toFixed(2);
+  document.getElementById('total-egresos').textContent = '-' + totalEgresos.toFixed(2);
+  var totalActualizado = totalIngresos - totalEgresos;
+  document.getElementById('total').value = totalActualizado.toFixed(2);
+}
 
-        egresos.forEach(function(transaccion) {
-            const row = document.createElement('tr');
-            const porcentaje = transaccion.monto * 100 / calcularTotalIngresos();
-            row.innerHTML = `<td>${transaccion.descripcion}</td><td>${transaccion.monto.toFixed(2)}</td><td>${porcentaje.toFixed(2)}%</td>`;
-            expenseTableBody.appendChild(row);
-        });
-    }
+function mostrarResultado(descripcion, monto, tipoTransaccion) {
+  var resultado = document.getElementById('resultado');
+  resultado.textContent = `Transacción (${tipoTransaccion}): ${descripcion} + ${monto.toFixed(2)}`;
 
-    // Función para calcular el total de ingresos
-    function calcularTotalIngresos() {
-        return ingresos.reduce((total, transaccion) => total + transaccion.monto, 0);
-    }
+  setTimeout(function() {
+    resultado.textContent = '';
+  }, 3000); 
+}
 
-    // Función para calcular el total de egresos
-    function calcularTotalEgresos() {
-        return egresos.reduce((total, transaccion) => total + transaccion.monto, 0);
-    }
+function mostrarIngresos(id){
+  var elemento = document.getElementById(id);
+  var elemento1 = document.getElementById('expenses');
+  elemento.style.display = "block";
+  elemento1.style.display = "none";
+  var btnIncome = document.getElementById('btn-Income');
+  var btnExpense = document. getElementById('btn-Expense');
+  btnIncome.style.backgroundColor = 'rgba(43,50,58,255)';
+  btnExpense.style.backgroundColor = 'rgba(214,214,214,255)';
+}
 
-    // Función para calcular el porcentaje total de gastos
-    function calcularPorcentajeGastos() {
-        const totalIngresos = calcularTotalIngresos();
-        const totalEgresos = calcularTotalEgresos();
-        if (totalIngresos === 0) {
-            return 0;
-        }
-        return (totalEgresos * 100 / totalIngresos).toFixed(2);
-    }
-
-    // Función para calcular y actualizar totales
-    function calcularTotales() {
-        const totalIngresos = calcularTotalIngresos();
-        const totalEgresos = calcularTotalEgresos();
-        const porcentajeGastos = calcularPorcentajeGastos();
-
-        montoTotal.textContent = `Total disponible: ${(totalIngresos - totalEgresos).toFixed(2)}`;
-        incomeText.textContent = `INGRESOS: ${totalIngresos.toFixed(2)}`;
-        expenseText.textContent = `EGRESOS: ${totalEgresos.toFixed(2)}`;
-        expensePercentage.textContent = `Porcentaje de gastos: ${porcentajeGastos}%`;
-    }
-
-    // Inicializar título con mes y año actual
-    const fechaActual = new Date();
-    const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-    titulo.textContent = `Presupuesto de ${meses[fechaActual.getMonth()]} ${fechaActual.getFullYear()}`;
-    mes.textContent = meses[fechaActual.getMonth()];
-    año.textContent = fechaActual.getFullYear();
-
-    // Manejar evento de envío del formulario de transacción
-    transactionForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Evitar envío del formulario
-        agregarTransaccion(); // Agregar transacción
-    });
-});
-
+function mostrarEgresos(id){
+  var elemento = document.getElementById(id);
+  var elemento1 = document.getElementById('incomes');
+  elemento.style.display = "block";
+  elemento1.style.display = "none";
+  var btnIncome = document.getElementById('btn-Income');
+  var btnExpense = document. getElementById('btn-Expense');
+  btnIncome.style.backgroundColor = 'rgba(214,214,214,255)';
+  btnExpense.style.backgroundColor = 'rgba(43,50,58,255)';
+}
